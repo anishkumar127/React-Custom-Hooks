@@ -8,7 +8,7 @@ export const Sidebar = ({ }: SidebarProps) => {
     return (
         <div>
             <div>{user.name}</div>
-            <div>Is Valid Or Not : {user?.isTrue ? "YES" : "NO"}</div>
+            <div>Is Valid Or Not : {user.isTrue ? "YES" : "NO"}</div>
         </div>
     )
 }
