@@ -1,46 +1,51 @@
-import { useAppDispatch, useAppSelector } from "./store/hooks"
-import { toggleLightDarkMode } from "./store/slices/themes/themesSlice";
+import { useAppDispatch, useAppSelector } from "./store/hooks";
+import { setLightMode, setDarkMode, setSiteMode } from "./store/slices/themes/themesSlice";
 
 function App() {
-  const themesMode = useAppSelector(state => state.lightDarkMode.mode);
+  const mode = useAppSelector((state) => state.lightDarkMode.mode);
   const dispatch = useAppDispatch();
 
-  const handleOnClick = (e) => {
-    const value = e.target.value;
-    dispatch(toggleLightDarkMode(value));
-  }
+  const handleOnClickLight = () => {
+    dispatch(setLightMode());
+  };
+
+  const handleOnClickDark = () => {
+    dispatch(setDarkMode());
+  };
+
+  const handleOnClickSite = () => {
+    dispatch(setSiteMode());
+  };
+
   return (
     <>
+      <span>Theme mode is: {mode}</span>
 
-      <span> themes is : <strong>{themesMode} </strong></span>
+      <div>
+        <label>
+          {/* <input type="checkbox" checked={mode === "light"} onChange={handleOnClickLight} /> */}
+          <input type="checkbox" checked={mode === "light"} onChange={handleOnClickLight} />
+          Light Mode
+        </label>
+      </div>
 
-      <hr />
-      <input
-        type="checkbox"
-        value="light"
-        checked={themesMode === "light"}
-        onChange={handleOnClick}
-      />
-      <label htmlFor="light">Light</label>
+      <div>
+        <label>
+          {/* <input type="checkbox" checked={mode === "dark"} onChange={handleOnClickDark} /> */}
+          <input type="checkbox" checked={mode === "dark"} onChange={handleOnClickDark} />
+          Dark Mode
+        </label>
+      </div>
 
-      <input
-        type="checkbox"
-        value="dark"
-        checked={themesMode === "dark"}
-        onChange={handleOnClick}
-      />
-      <label htmlFor="dark">Dark</label>
-
-      <input
-        type="checkbox"
-        value="site"
-        checked={themesMode === "site"}
-        onChange={handleOnClick}
-      />
-      <label htmlFor="site">Site</label>
-
+      <div>
+        <label>
+          {/* <input type="checkbox" checked={mode === "site"} onChange={handleOnClickSite} /> */}
+          <input type="checkbox" checked={mode === "site"} onChange={handleOnClickSite} />
+          Site Mode
+        </label>
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

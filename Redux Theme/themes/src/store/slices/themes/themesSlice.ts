@@ -7,19 +7,20 @@ export const lightDarkModeSlice = createSlice({
     name: "lightDarkMode",
     initialState,
     reducers: {
-        toggleLightDarkMode: (state) => {
-            console.log(state, state.mode);
-            if (state.mode === "light") {
-                state.mode = "light";
-            } else if (state.mode === "dark") {
-                state.mode = "dark";
-            } else {
-                state.mode = "site";
-            }
+        setLightMode: (state) => {
+            state.mode = "light";
             localStorage.setItem("lightDarkMode", JSON.stringify(state.mode));
-        }
+        },
+        setDarkMode: (state) => {
+            state.mode = "dark";
+            localStorage.setItem("lightDarkMode", JSON.stringify(state.mode));
+        },
+        setSiteMode: (state) => {
+            state.mode = "site";
+            localStorage.setItem("lightDarkMode", JSON.stringify(state.mode));
+        },
     }
 })
 
-export const { toggleLightDarkMode } = lightDarkModeSlice.actions;
+export const { setLightMode, setDarkMode, setSiteMode } = lightDarkModeSlice.actions;
 export default lightDarkModeSlice.reducer;
