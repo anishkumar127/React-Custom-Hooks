@@ -1,46 +1,73 @@
 import { useAppDispatch, useAppSelector } from "./store/hooks";
-import { setLightMode, setDarkMode, setSiteMode } from "./store/slices/themes/themesSlice";
+import { setThemesMode } from "./store/slices/themes/themesSlice";
 
 function App() {
   const mode = useAppSelector((state) => state.lightDarkMode.mode);
   const dispatch = useAppDispatch();
 
-  const handleOnClickLight = () => {
-    dispatch(setLightMode());
-  };
+  // const handleOnClickThemesMode = (selectedMode: string) => {
+  //   dispatch(setThemesMode(selectedMode));
+  // }
 
-  const handleOnClickDark = () => {
-    dispatch(setDarkMode());
-  };
-
-  const handleOnClickSite = () => {
-    dispatch(setSiteMode());
+  const handleOnClickThemesMode = (mode: string) => () => {
+    dispatch(setThemesMode(mode));
   };
 
   return (
     <>
       <span>Theme mode is: {mode}</span>
 
-      <div>
+      {/* <div>
         <label>
-          {/* <input type="checkbox" checked={mode === "light"} onChange={handleOnClickLight} /> */}
-          <input type="checkbox" checked={mode === "light"} onChange={handleOnClickLight} />
+          <input type="checkbox" checked={mode === "light"} onChange={() => handleOnClickThemesMode("light")} />
           Light Mode
         </label>
       </div>
 
       <div>
         <label>
-          {/* <input type="checkbox" checked={mode === "dark"} onChange={handleOnClickDark} /> */}
-          <input type="checkbox" checked={mode === "dark"} onChange={handleOnClickDark} />
+          <input type="checkbox" checked={mode === "dark"} onChange={() => handleOnClickThemesMode("dark")} />
           Dark Mode
         </label>
       </div>
 
       <div>
         <label>
-          {/* <input type="checkbox" checked={mode === "site"} onChange={handleOnClickSite} /> */}
-          <input type="checkbox" checked={mode === "site"} onChange={handleOnClickSite} />
+          <input type="checkbox" checked={mode === "site"} onChange={() => handleOnClickThemesMode("site")} />
+          Site Mode
+        </label>
+      </div>
+       */}
+
+      <div>
+        <label>
+          <input
+            type="checkbox"
+            checked={mode === "light"}
+            onChange={handleOnClickThemesMode("light")}
+          />
+          Light Mode
+        </label>
+      </div>
+
+      <div>
+        <label>
+          <input
+            type="checkbox"
+            checked={mode === "dark"}
+            onChange={handleOnClickThemesMode("dark")}
+          />
+          Dark Mode
+        </label>
+      </div>
+
+      <div>
+        <label>
+          <input
+            type="checkbox"
+            checked={mode === "site"}
+            onChange={handleOnClickThemesMode("site")}
+          />
           Site Mode
         </label>
       </div>
