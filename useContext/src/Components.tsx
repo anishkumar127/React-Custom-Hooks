@@ -1,11 +1,10 @@
 import { User } from "./App";  // Props & User Types.
 
 interface SidebarProps {
-    user: User;
 }
 
 
-export const Sidebar = ({ user }: SidebarProps) => {
+export const Sidebar = ({ }: SidebarProps) => {
     return (
         <div>
             <div>{user.name}</div>
@@ -16,10 +15,9 @@ export const Sidebar = ({ user }: SidebarProps) => {
 
 
 interface ProfileProps {
-    user: User;
 }
 
-export const Profile = ({ user }: ProfileProps) => {
+export const Profile = ({ }: ProfileProps) => {
     return (
         <div>
             {user.name}
