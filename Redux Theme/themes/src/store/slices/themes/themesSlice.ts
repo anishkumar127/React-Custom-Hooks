@@ -1,26 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const modeFromLocalStorage = localStorage.getItem("lightDarkMode");
+const defaultMode = "site";
+
 const initialState = {
-    mode: localStorage.getItem("lightDarkMode") !== undefined && localStorage.getItem("lightDarkMode") !== null ? JSON.parse(localStorage.getItem("lightDarkMode")) : "site",
+    mode: modeFromLocalStorage !== null && modeFromLocalStorage !== undefined ? JSON.parse(modeFromLocalStorage) : defaultMode,
 }
 export const lightDarkModeSlice = createSlice({
     name: "lightDarkMode",
     initialState,
     reducers: {
-        setLightMode: (state) => {
-            state.mode = "light";
-            localStorage.setItem("lightDarkMode", JSON.stringify(state.mode));
-        },
-        setDarkMode: (state) => {
-            state.mode = "dark";
-            localStorage.setItem("lightDarkMode", JSON.stringify(state.mode));
-        },
-        setSiteMode: (state) => {
-            state.mode = "site";
+        setThemesMode: (state, action) => {
+            state.mode = action.payload;
             localStorage.setItem("lightDarkMode", JSON.stringify(state.mode));
         },
     }
 })
 
-export const { setLightMode, setDarkMode, setSiteMode } = lightDarkModeSlice.actions;
+export const { setThemesMode } = lightDarkModeSlice.actions;
 export default lightDarkModeSlice.reducer;
