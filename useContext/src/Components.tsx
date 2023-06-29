@@ -1,28 +1,27 @@
-import { User } from "./App";  // Props & User Types.
-
+import { useUserContext } from "./context/context";
 interface SidebarProps {
-    user: User;
 }
 
 
-export const Sidebar = ({ user }: SidebarProps) => {
+export const Sidebar = ({ }: SidebarProps) => {
+    const user = useUserContext();
     return (
         <div>
-            <div>{user.name}</div>
-            <div>Is Valid Or Not : {user.isTrue ? "YES" : "NO"}</div>
+            <div>{user?.name}</div>
+            <div>Is Valid Or Not : {user?.isTrue ? "YES" : "NO"}</div>
         </div>
     )
 }
 
 
 interface ProfileProps {
-    user: User;
 }
 
-export const Profile = ({ user }: ProfileProps) => {
+export const Profile = ({ }: ProfileProps) => {
+    const user = useUserContext();
     return (
         <div>
-            {user.name}
+            {user?.name}
         </div>
     )
 }
